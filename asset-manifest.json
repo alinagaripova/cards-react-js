@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cards-react-js/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/cards-react-js/static/js/main.04f4eab9.chunk.js",
-    "main.js.map": "/cards-react-js/static/js/main.04f4eab9.chunk.js.map",
+    "main.js": "/cards-react-js/static/js/main.ca142284.chunk.js",
+    "main.js.map": "/cards-react-js/static/js/main.ca142284.chunk.js.map",
     "runtime-main.js": "/cards-react-js/static/js/runtime-main.04c4858d.js",
     "runtime-main.js.map": "/cards-react-js/static/js/runtime-main.04c4858d.js.map",
     "static/css/2.9648bd54.chunk.css": "/cards-react-js/static/css/2.9648bd54.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.9648bd54.chunk.css",
     "static/js/2.7da39879.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.04f4eab9.chunk.js"
+    "static/js/main.ca142284.chunk.js"
   ]
 }
