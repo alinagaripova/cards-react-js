@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { get } from "lodash";
-
-import cards from "./entities";
 
 export default function Cards(){
 
-    const items = get(cards, "[0].response", [])
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://alinagaripova.github.io/json-api/entities.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            data && setCards(get(data, "response"))
+        })
+        .catch(error => console.error("entities.json loader", error));
+    }, [])
 
     return (
-        <div className={"container"}>
+        <div className={"container py-3"}>
             <div className="row justify-content-between">
-                {items.map((item, idx)=> {
+                {cards && cards.map((item, idx)=> {
                     const title = get(item, "attributes.title", "");
                     const street = get(item, "attributes.address.street", "");
                     const house = get(item, "attributes.address.house", "");
                     const room = get(item, "attributes.address.room", "");
                     return (
-                        <div className="col-12 col-md-4 mb-3">
+                        <div className="col-12 col-md-4 mb-3" key={idx}>
                             <div
                                 className="card"
                                 style={{
@@ -27,7 +39,12 @@ export default function Cards(){
                                     <h5 className="card-title">
                                         {title}
                                     </h5>
-                                    <p className="card-text">
+                                    <p
+                                        className="card-text"
+                                        style={{
+                                            minHeight: "50px"
+                                       }}
+                                    >
                                         Адресс: ул.{street},дом.{house}, кв.{room}
                                     </p>
                                     <button
