@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { get } from "lodash";
 
+import "./Cards.css";
+
 export default function Cards(){
 
     const [cards, setCards] = useState([]);
@@ -36,6 +38,8 @@ export default function Cards(){
                     const street = get(attributes, "address.street", "");
                     const house = get(attributes, "address.house", "");
                     const room = get(attributes, "address.room", "");
+                    const preview_image = get(attributes, "preview_image.src", "");
+                    const alt = get(attributes, "preview_image.alt", "");
                     const fill = liked.find(item => item === id) === id ? `red` : `none`;
 
                     return (
@@ -46,8 +50,14 @@ export default function Cards(){
                                     minHeight: "250px"
                                 }}
                             >
+                                <img src={preview_image} className="card-img-top" alt={alt} />
                                 <div className="card-body d-flex flex-column justify-content-around align-content-center text-center">
-                                    <h5 className="card-title">
+                                    <h5
+                                        className="card-title"
+                                        style={{
+                                            minHeight: "48px"
+                                        }}
+                                    >
                                         {title}
                                     </h5>
                                     <p
@@ -56,7 +66,7 @@ export default function Cards(){
                                             minHeight: "50px"
                                        }}
                                     >
-                                        Адресс: ул.{street},дом.{house}, кв.{room}
+                                        Адрес: ул.{street},дом.{house}, кв.{room}
                                     </p>
                                    <div
                                        className={"card__like"}
